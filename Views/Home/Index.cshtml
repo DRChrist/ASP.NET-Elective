@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1>Så er der sateme studerende!</h1>
+    <p>@foreach(var st in ViewBag.Y)
+        {
+            <p>@st.FirstName  @st.LastName - @st.EnrollmentDate  </p>
+        } </p>
+    </body>
+</html>
