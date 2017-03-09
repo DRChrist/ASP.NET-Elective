@@ -8,9 +8,10 @@ using StudentApplication.Models;
 namespace MVC.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170309144120_second")]
+    partial class second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1");
@@ -19,8 +20,6 @@ namespace MVC.Migrations
                 {
                     b.Property<int>("StudentID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Age");
 
                     b.Property<DateTime>("EnrollmentDate");
 

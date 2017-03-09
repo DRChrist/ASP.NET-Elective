@@ -24,9 +24,6 @@ namespace StudentApplication.Controllers
             db.SaveChanges();
 
             List<Student> students = db.Students.ToList();
-            //students.Add(new Student("Mogens", 34));
-            //students.Add(new Student("John", 33));
-            //students.Add(new Student("Børge", 35));
 
             ViewBag.Y = students;
             return View();

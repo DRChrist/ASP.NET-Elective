@@ -9,12 +9,6 @@ namespace StudentApplication.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime EnrollmentDate { get; set; }
-
-        public Student(string firstName, string lastName, DateTime enrollmentDate)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            EnrollmentDate = enrollmentDate;
-        }
+        public int Age { get; set; }
     }
 }

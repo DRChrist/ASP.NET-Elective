@@ -7,26 +7,34 @@ using StudentApplication.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace MVC
+namespace StudentApplication.Controllers
 {
     public class StudentController : Controller
     {
         MyDbContext db = new MyDbContext();
 
-        public void createStudent(string firstName, string lastName, DateTime enrollmentDate)
-        {
-            Student st = new Student(firstName, lastName, enrollmentDate);
-            db.Students.Add(st);
-            db.SaveChanges();
-        }
-
-        public void updateStudent
-
         // GET: /<controller>/
+        [HttpGet]
         public IActionResult Index()
         {
+            List<Student> students = db.Students.ToList();
+            return View(students);
+        }
 
+        //Create
+        [HttpGet]
+        public IActionResult Create()
+        {
+           
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Student st)
+        {
+            db.Students.Add(st);
+            db.SaveChanges();
             return View();
         }
     }
+
 }
