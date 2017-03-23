@@ -1,0 +1,20 @@
+@model IEnumerable<StudentApplication.Models.Course>
+@{
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1></h1>
+    <p>@foreach(var st in Model)
+        {
+            <p>@st.CourseID  @st.Title - @st.Credits  </p>
+        } </p>
+    </body>
+</html>

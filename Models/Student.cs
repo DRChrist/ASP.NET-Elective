@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace StudentApplication.Models
 {
@@ -21,5 +22,7 @@ namespace StudentApplication.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime EnrollmentDate { get; set; }
         public int Age { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
+
     }
 }

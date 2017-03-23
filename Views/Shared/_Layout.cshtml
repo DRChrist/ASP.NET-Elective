@@ -1,4 +1,3 @@
-@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +7,7 @@
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/admin/css/style.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -16,7 +15,6 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -28,22 +26,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Student" asp-action="Index" class="navbar-brand">MvcStudent</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Students Bitch!</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Student" asp-action="Index">Students</a></li>
+                    <li><a asp-area="" asp-controller="Student" asp-action="Courses">Courses</a></li>
+                    <li><a asp-area="" asp-controller="Student" asp-action="Enrollments">Enrollments</a></li>
+                    <li><a asp-area="" asp-controller="Student" asp-action="Create">Create</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container body-content">
+        <br>
+        <br>
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - MvcMovie</p>
+            <p>&copy; 2017 - Dette er det undertegnede</p>
         </footer>
     </div>
 

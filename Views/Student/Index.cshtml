@@ -1,4 +1,7 @@
 @model IEnumerable<StudentApplication.Models.Student>
+@{
+    Layout = "_Layout";
+}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +11,7 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-    <h1>Så er der sateme studerende!</h1>
+    <h1></h1>
     <p>@foreach(var st in Model)
         {
             <p>@st.FirstName  @st.LastName - @st.EnrollmentDate  </p>

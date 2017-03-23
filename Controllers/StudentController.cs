@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudentApplication.Models;
+using StudentApplication.Data;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,7 +12,13 @@ namespace StudentApplication.Controllers
 {
     public class StudentController : Controller
     {
-        MyDbContext db = new MyDbContext();
+        private readonly SchoolContext _context;
+
+        public StudentController(SchoolContext context)
+        {
+            _context = context;
+        }
+        SchoolContext db = new SchoolContext();
 
         // GET: /<controller>/
         [HttpGet]
@@ -19,6 +26,20 @@ namespace StudentApplication.Controllers
         {
             List<Student> students = db.Students.ToList();
             return View(students);
+        }
+
+        [HttpGet]
+        public IActionResult Courses()
+        {
+            List<Course> courses = db.Courses.ToList();
+            return View(courses);
+        }
+
+        [HttpGet]
+        public IActionResult Enrollments()
+        {
+            List<Enrollment> enrollments = db.Enrollments.ToList();
+            return View(enrollments);
         }
 
         //Create

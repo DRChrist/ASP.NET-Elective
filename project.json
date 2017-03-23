@@ -16,6 +16,10 @@
         "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
         "Microsoft.AspNetCore.Mvc": "1.1.1",
         "Microsoft.EntityFrameworkCore.Sqlite": "1.1.1",
+        "Microsoft.EntityFrameworkCore.Sqlite.Design":{
+          "version": "1.0.0",
+          "type": "build"
+        },
         "Microsoft.EntityFrameworkCore.Tools": {
           "version": "1.0.0-preview2-final",
           "type": "build"
@@ -25,7 +29,8 @@
         "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-}
+},
+  "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0"
       },
       "imports": "dnxcore50"
     }
