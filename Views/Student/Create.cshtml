@@ -1,4 +1,7 @@
 @model StudentApplication.Models.Student
+@{
+    Layout = "_Layout";
+}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,11 +13,15 @@
     <body>
     <h1>Create Student</h1>
     <form action="/Student/Create" method="POST">
-        <input asp-for="StudentID">
-        <label asp-validation="" >
-        <input asp-for="FirstName">
-        <input type="text" name="LastName">
-        <input type="text" name="EnrollmentDate">
+        <label asp-for="StudentID"></label>
+        <input placeholder="Student ID" asp-for="StudentID">
+        <label asp-validation="" ></label>
+        <label asp-for="FirstName"></label>
+        <input placeholder="First Name" asp-for="FirstName">
+        <label asp-for="LastName"></label>
+        <input placeholder="Last Name" asp-for="LastName">
+        <label asp-for="EnrollmentDate"></label>
+        <input placeholder="Enrollment Date" asp-for="EnrollmentDate">
         <input type="submit" value="Send">
     </form>
     <p> </p>

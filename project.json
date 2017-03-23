@@ -21,7 +21,11 @@
           "type": "build"
         },
         "Microsoft.Extensions.Logging": "1.1.1",
-        "Microsoft.Extensions.Logging.Console": "1.1.1"
+        "Microsoft.Extensions.Logging.Console": "1.1.1",
+        "Microsoft.AspNetCore.Razor.Tools": {
+      "version": "1.0.0-preview2-final",
+      "type": "build"
+}
       },
       "imports": "dnxcore50"
     }

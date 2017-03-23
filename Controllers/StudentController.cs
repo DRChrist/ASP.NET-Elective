@@ -29,11 +29,18 @@ namespace StudentApplication.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Student st)
+        public IActionResult Create([Bind("StudentID,FirstName,LastName,EnrollmentDate")] Student st)
         {
-            db.Students.Add(st);
-            db.SaveChanges();
-            return View();
+            if(ModelState.IsValid)
+            {
+                db.Students.Add(st);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 
