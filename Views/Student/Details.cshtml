@@ -1,0 +1,30 @@
+@model StudentApplication.Models.Student
+@{
+    Layout = "_Layout";
+}
+<!DOCTYPE>
+<html>
+<head>
+  <title>Student Details</title>
+</head>
+<body>
+  
+      <h1>Student Details</h1>
+    
+      <p><a href="~/Student/Index">Return to students</a></p>
+
+        <fieldset>
+        <legend>Student Information</legend>
+
+        <p><span>First name:</span>
+         <span>@Model.FirstName</span></p>
+
+        <p><span>Last name:</span>
+         <span>@Model.LastName</span></p>
+
+        <p><span>Enrollment Date:</span>
+          <span>@Model.EnrollmentDate</span></p>
+
+        </fieldset>
+    </body>
+</html>

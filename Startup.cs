@@ -18,7 +18,8 @@ namespace StudentApplication
         }
 
        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logger, SchoolContext context)
-       {           
+       {          
+            app.UseStaticFiles(); 
             //Log to the console
             logger.AddConsole();
             app.UseMvc(routes =>

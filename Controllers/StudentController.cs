@@ -63,6 +63,39 @@ namespace StudentApplication.Controllers
                 return View();
             }
         }
+        [HttpGet]
+        public IActionResult DeleteStudent(int id)
+        {
+            Student student = db.Students.Find(id);
+
+            return View(student);
+        }
+        [HttpPost]
+        public IActionResult DeleteStudent(Student st)
+        {
+            db.Students.Remove(st);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            Student student = db.Students.Find(id);
+
+            return View(student);
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            Student student = db.Students.Find(id);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Student st)
+        {
+            
+        }
     }
 
 }
