@@ -14,22 +14,35 @@
     
       <p><a href="~/Student/Index">Return to students</a></p>
 
-      <form action="/Student/DeleteStudent" method="POST">
-        <fieldset>
-        <legend>Student Information</legend>
+        <form asp-controller="Student"  asp-action="DeleteStudent" method="POST">
+        <input class="form-control" type="Hidden" asp-for="StudentID">
+        
+        <div class="form-group">
+        <label asp-for="First name"></label>
+         <div><p class="form-control-static">@Model.FirstName</p></div>
+        </div>
 
-        <p><span>First name:</span>
-         <span>@Model.FirstName</span></p>
+        <div class="form-group">
+        <label asp-for="Last name"></label>
+         <div><p class="form-control-static">@Model.LastName</p></div>
+        </div>
 
-        <p><span>Last name:</span>
-         <span>@Model.LastName</span></p>
+        <div class="form-group">
+        <label asp-for="Enrollment date"></label>
+         <div><p class="form-control-static">@Model.EnrollmentDate</p></div>
+        </div>
 
-        <p><span>Enrollment Date:</span>
-          <span>@Model.EnrollmentDate</span></p>
+        <div class="form-group">
+        <label asp-for="Age"></label>
+         <div><p class="form-control-static">@Model.Age</p></div>
+        </div>
 
-        <input type="hidden" value="@Model.StudentID" />
-        <p><input type="submit" name="buttonDelete" value="Delete" /></p>
-        </fieldset>
+        <div class="form-group">
+            <div>
+              <button type="submit" class="btn btn-danger">Delete</button>
+              <a class="btn btn-info" asp-controller="Student" asp-action="Index">Back to list</a>
+              </div>
+            </div>
       </form>
     </body>
 </html>

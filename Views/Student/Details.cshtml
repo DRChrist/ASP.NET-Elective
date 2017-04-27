@@ -5,26 +5,39 @@
 <!DOCTYPE>
 <html>
 <head>
-  <title>Student Details</title>
+  <title>Details</title>
 </head>
 <body>
   
-      <h1>Student Details</h1>
+      <h2>Details for student @Model.FirstName @Model.LastName</h2>
     
-      <p><a href="~/Student/Index">Return to students</a></p>
+        <input class="form-control" type="Hidden" asp-for="StudentID">
+        
+        <label asp.for="First name"></label>
+         <div><p class="form-control-static">@Model.FirstName</p></div>
 
-        <fieldset>
-        <legend>Student Information</legend>
+        <label asp.for="Last name"></label>
+         <div><p class="form-control-static">@Model.LastName</p></div>
 
-        <p><span>First name:</span>
-         <span>@Model.FirstName</span></p>
+        <label asp.for="Enrollment date"></label>
+         <div><p class="form-control-static">@Model.EnrollmentDate</p></div>
 
-        <p><span>Last name:</span>
-         <span>@Model.LastName</span></p>
+        <label asp.for="Age"></label>
+         <div><p class="form-control-static">@Model.Age</p></div>
 
-        <p><span>Enrollment Date:</span>
-          <span>@Model.EnrollmentDate</span></p>
+        
+      <h3>Enrollments</h3>
+      @foreach(var st in Model.Enrollments)
+      {
+        @if(st.Grade == 0)
+        {
+          <p>@st.Course.Title  -  ------</p>
+        }
+        <p>@st.Course.Title  -  @st.Grade</p>
+      }
 
-        </fieldset>
+      <div class="form-group">
+          <a class="btn btn-info" asp-controller="Student" asp-action="Index">Back to list</a>
+          </div>
     </body>
 </html>

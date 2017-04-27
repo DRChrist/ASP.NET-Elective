@@ -11,7 +11,7 @@
     </head>
     <body>
     <h1></h1>
-    <form action="/Student/Update" method="POST">
+    <form asp-controller="Student" asp-action="Update" method="POST">
         <label asp-for="StudentID"></label>
         <input placeholder="Student ID" asp-for="StudentID">
         <label asp-validation="" ></label>

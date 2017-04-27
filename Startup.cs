@@ -5,6 +5,7 @@ using StudentApplication.Models;
 using StudentApplication.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
+using StudentApplication.Models.Repositories;
 
 namespace StudentApplication
 {
@@ -15,6 +16,7 @@ namespace StudentApplication
         {
             services.AddDbContext<SchoolContext>();
             services.AddMvc();
+            services.AddScoped<IStudentRepository, StudentRepository>();
         }
 
        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logger, SchoolContext context)

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StudentApplication.Models;
 using StudentApplication.Data;
+using StudentApplication.Models.Repositories;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,41 +13,34 @@ namespace StudentApplication.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly SchoolContext _context;
+        //private readonly SchoolContext _context;
+        
+        //tightly coupled:
+        //SchoolContext db = new SchoolContext();
 
-        public StudentController(SchoolContext context)
+        //loosely coupled:
+        private IStudentRepository studentRepository;
+
+        public StudentController(IStudentRepository studentRepository)
         {
-            _context = context;
+            this.studentRepository = studentRepository;
         }
-        SchoolContext db = new SchoolContext();
+
+        
 
         // GET: /<controller>/
         [HttpGet]
         public IActionResult Index()
         {
-            List<Student> students = db.Students.ToList();
+            IEnumerable<Student> students = studentRepository.getAll();
             return View(students);
         }
 
-        [HttpGet]
-        public IActionResult Courses()
-        {
-            List<Course> courses = db.Courses.ToList();
-            return View(courses);
-        }
-
-        [HttpGet]
-        public IActionResult Enrollments()
-        {
-            List<Enrollment> enrollments = db.Enrollments.ToList();
-            return View(enrollments);
-        }
 
         //Create
         [HttpGet]
         public IActionResult Create()
         {
-           
             return View();
         }
         [HttpPost]
@@ -54,8 +48,7 @@ namespace StudentApplication.Controllers
         {
             if(ModelState.IsValid)
             {
-                db.Students.Add(st);
-                db.SaveChanges();
+                studentRepository.Save(st);
                 return RedirectToAction("Index");
             }
             else
@@ -66,36 +59,39 @@ namespace StudentApplication.Controllers
         [HttpGet]
         public IActionResult DeleteStudent(int id)
         {
-            Student student = db.Students.Find(id);
-
-            return View(student);
+            Student st = studentRepository.Get(id);
+            return View(st);
         }
         [HttpPost]
         public IActionResult DeleteStudent(Student st)
         {
-            db.Students.Remove(st);
-            db.SaveChanges();
+            studentRepository.Delete(st);
             return RedirectToAction("Index");
         }
 
         public IActionResult Details(int id)
         {
-            Student student = db.Students.Find(id);
-
-            return View(student);
+            Student st = studentRepository.Get(id);
+            return View(st);
         }
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult EditStudent(int id)
         {
-            Student student = db.Students.Find(id);
+            Student student = studentRepository.Get(id);
+            return View(student);
         }
 
         [HttpPost]
-        public IActionResult Update(Student st)
+        public IActionResult EditStudent(Student st)
         {
-            
-        }
+            if(ModelState.IsValid)
+            {
+                studentRepository.Update(st);
+                return RedirectToAction("Index");
+            }
+            return View(st);
+        } 
     }
 
 }

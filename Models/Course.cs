@@ -10,6 +10,6 @@ namespace StudentApplication.Models
         public string Title { get; set; }
         public int Credits { get; set; }
 
-        public ICollection<Enrollment> Enrollments { get; set; }
+        public IEnumerable<Enrollment> Enrollments { get; set; }
     }
 }

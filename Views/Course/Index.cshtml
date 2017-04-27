@@ -1,0 +1,23 @@
+@model IEnumerable<StudentApplication.Models.Course>
+@{
+    Layout = "_Layout";
+}
+    <body class="container">
+    <h1 class="jumbotron">Courses</h1>
+    <a asp-controller="Student" asp-action="Create" class="btn btn-success">New Student</a>        
+    <table class="table table-striped" "table-hover" "table-condensed">
+        <tr>
+        <th>@Html.DisplayNameFor(Models => Models.CourseID)</th>
+        <th>@Html.DisplayNameFor(Models => Models.Title)</th>
+        <th>@Html.DisplayNameFor(Models => Models.Credits)</th>
+        </tr>
+    @foreach(var c in Model)
+        {
+        <tr>
+            <td> @c.Title </td>
+            <td> @c.Title </td>
+            <td> @c.Credits </td>
+        </tr>
+        } 
+    </table>
+    </body>
