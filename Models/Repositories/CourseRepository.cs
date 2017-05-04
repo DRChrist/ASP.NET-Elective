@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using StudentApplication.Data;
+using StudentApplication.Models.Entities;
 
 namespace StudentApplication.Models.Repositories
 {
@@ -17,30 +18,30 @@ namespace StudentApplication.Models.Repositories
             _courses = db.Courses;
         }
 
-        public void Delete(Course course)
+        void ICourseRepository.Delete(Course course)
         {
             _db.Courses.Remove(course);
             _db.SaveChanges();
         }
 
-        public Course Get(int id)
+        Course ICourseRepository.Get(int id)
         {
             Course c = _db.Courses.Find(id);
             return c;
         }
 
-        public IEnumerable<Course> getAll()
+        IEnumerable<Course> ICourseRepository.getAll()
         {
             return _courses;
         }
 
-        public void Save(Course course)
+        void ICourseRepository.Save(Course course)
         {
             _db.Add(course);
             _db.SaveChanges();
         }
 
-        public void Update(Course course)
+        void ICourseRepository.Update(Course course)
         {
             _db.Update(course);
             _db.SaveChanges();

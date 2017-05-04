@@ -4,6 +4,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using StudentApplication.Models;
+using StudentApplication.Models.Entities;
+
 
 namespace StudentApplication.Data
 {

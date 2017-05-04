@@ -1,25 +1,18 @@
-@model StudentApplication.Models.Student
+@model StudentApplication.Models.Entities.Student
 @{
-    Layout = "_Layout";
-}
-<!DOCTYPE>
-<html>
-<head>
-  <title>Details</title>
-</head>
-<body>
-  
-      <h2>Details for student @Model.FirstName @Model.LastName</h2>
+    ViewBag.Title = "Student Details";
+}  
+      <h3>Details for student @Model.FirstName @Model.LastName</h3>
     
         <input class="form-control" type="Hidden" asp-for="StudentID">
         
-        <label asp.for="First name"></label>
+        <label asp.for="FirstName"></label>
          <div><p class="form-control-static">@Model.FirstName</p></div>
 
-        <label asp.for="Last name"></label>
+        <label asp.for="LastName"></label>
          <div><p class="form-control-static">@Model.LastName</p></div>
 
-        <label asp.for="Enrollment date"></label>
+        <label asp.for="EnrollmentDate"></label>
          <div><p class="form-control-static">@Model.EnrollmentDate</p></div>
 
         <label asp.for="Age"></label>
@@ -37,7 +30,7 @@
       }
 
       <div class="form-group">
+          <a class="btn btn-primary" asp-controller="Student" asp-action="Course" asp-route-id=@Model.StudentID >Add Enrollments</a>
+          <a class="btn btn-primary" asp-controller="Student" asp-action="Enrollments" asp-route-id=@Model.StudentID >Give Grade</a>
           <a class="btn btn-info" asp-controller="Student" asp-action="Index">Back to list</a>
           </div>
-    </body>
-</html>

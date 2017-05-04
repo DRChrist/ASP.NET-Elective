@@ -1,28 +1,16 @@
-@model StudentApplication.Models.Student
+@model StudentApplication.Models.Entities.Student
 @{
-    Layout = "_Layout";
+    ViewBag.Title = "Create Student";
 }
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-    <body>
-    <h1></h1>
+
+
     <form action="/Student/Create" method="POST">
-        <label asp-for="StudentID"></label>
-        <input placeholder="Student ID" asp-for="StudentID">
-        <label asp-validation="" ></label>
-        <label asp-for="FirstName"></label>
-        <input placeholder="First Name" asp-for="FirstName">
-        <label asp-for="LastName"></label>
-        <input placeholder="Last Name" asp-for="LastName">
-        <label asp-for="EnrollmentDate"></label>
-        <input placeholder="Enrollment Date" asp-for="EnrollmentDate">
-        <input type="submit" value="Send">
+            @Html.Partial("_StudentsForm")
+        <div class="form-group">
+            <div>
+                <button type="submit" class="btn btn-warning">Create</button>
+                <a class="btn btn-info" asp-controller="Student" asp-action="Index">Back to list</a>
+            </div>
+        </div>
     </form>
     <p> </p>
-    </body>
-</html>

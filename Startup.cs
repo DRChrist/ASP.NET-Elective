@@ -17,6 +17,8 @@ namespace StudentApplication
             services.AddDbContext<SchoolContext>();
             services.AddMvc();
             services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
         }
 
        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logger, SchoolContext context)

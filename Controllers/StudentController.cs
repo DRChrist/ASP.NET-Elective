@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using StudentApplication.Models;
 using StudentApplication.Data;
 using StudentApplication.Models.Repositories;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using StudentApplication.Models.Entities;
+using StudentApplication.Models.ViewModels;
 
 namespace StudentApplication.Controllers
 {
@@ -20,10 +19,14 @@ namespace StudentApplication.Controllers
 
         //loosely coupled:
         private IStudentRepository studentRepository;
+        private ICourseRepository courseRepository;
+        private IEnrollmentRepository enrollmentRepository;
 
-        public StudentController(IStudentRepository studentRepository)
+        public StudentController(IStudentRepository studentRepository, ICourseRepository courseRepository, IEnrollmentRepository enrollmentRepository)
         {
             this.studentRepository = studentRepository;
+            this.courseRepository = courseRepository;
+            this.enrollmentRepository = enrollmentRepository;
         }
 
         
@@ -91,7 +94,47 @@ namespace StudentApplication.Controllers
                 return RedirectToAction("Index");
             }
             return View(st);
-        } 
+        }
+
+        [HttpGet]
+        public IActionResult Course(int id)
+        {
+            StudentCourseViewModel stcvm = new StudentCourseViewModel();
+            stcvm.Student = studentRepository.Get(id);
+            stcvm.Courses = courseRepository.getAll();
+
+            return View(stcvm);
+        }
+        [HttpPost]
+        public IActionResult Course(Enrollment enrollment)
+        {
+            if(ModelState.IsValid)
+            {
+                enrollmentRepository.Save(enrollment);
+                return RedirectToAction("Index");
+            }
+            return View(enrollment.StudentID);
+        }
+       
+        [HttpGet]
+        public IActionResult Enrollments(int id)
+        {
+            Student st = studentRepository.Get(id);
+            return View(st);
+        }
+        [HttpPost]
+        public IActionResult Enrollments(Student st)
+        {
+            if(ModelState.IsValid)
+            {
+                foreach(var e in st.Enrollments)
+                {
+                    enrollmentRepository.Update(e);
+                }
+                return RedirectToAction("Index");
+            }
+            return View(st);
+        }
     }
 
 }

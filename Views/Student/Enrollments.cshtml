@@ -1,20 +1,28 @@
-@model IEnumerable<StudentApplication.Models.Enrollment>
+@model StudentApplication.Models.Entities.Student
 @{
-    Layout = "_Layout";
+    ViewBag.Title = "Enrollments of " + @Model.FirstName + " " + @Model.LastName; 
 }
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-    <body>
-    <h1></h1>
-    <p>@foreach(var st in Model)
-        {
-            <p>@st.CourseID  @st.StudentID - @st.Grade  </p>
-        } </p>
-    </body>
-</html>
+    <form asp-controller="Student"  asp-action="Enrollments" method="POST">
+    <input class="form-control" type="Hidden" asp-for="StudentID">
+
+    @foreach(var st in Model.Enrollments)
+      {
+    <div class="form-group">
+        <label asp-for="@st.Course.Title"></label>
+         <div><input asp-for="@st.Course.Title"></input></div>
+        </div>
+
+        <div class="form-group">
+        <label asp-for="@st.Grade"></label>
+         <div><input asp-for="@st.Grade"></input></div>
+        </div>
+        <p>------------------------------------------------------------------</p>
+      }
+
+      <div class="form-group">
+            <div>
+                <button type="submit" class="btn btn-warning">Accept Change</button>
+                <a class="btn btn-info" asp-controller="Student" asp-action="Index">Back to list</a>
+            </div>
+        </div>
+         </form>

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using StudentApplication.Models;
+using StudentApplication.Models.Entities;
+
 
 namespace StudentApplication.Data
 {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using StudentApplication.Data;
+using StudentApplication.Models.Entities;
 
 namespace StudentApplication.Models.Repositories
 {

@@ -1,16 +1,9 @@
-@model StudentApplication.Models.Student
+@model StudentApplication.Models.Entities.Student
 @{
-    Layout = "_Layout";
+    ViewBag.Title = "Delete Student";
 }
-<!DOCTYPE>
-<html>
-<head>
-  <title>Delete a Student</title>
-</head>
 <body>
-  
-      <h1>Delete a student</h1>
-          @Html.ValidationSummary()
+            @Html.ValidationSummary()
     
       <p><a href="~/Student/Index">Return to students</a></p>
 
@@ -18,17 +11,17 @@
         <input class="form-control" type="Hidden" asp-for="StudentID">
         
         <div class="form-group">
-        <label asp-for="First name"></label>
+        <label asp-for="FirstName"></label>
          <div><p class="form-control-static">@Model.FirstName</p></div>
         </div>
 
         <div class="form-group">
-        <label asp-for="Last name"></label>
+        <label asp-for="LastName"></label>
          <div><p class="form-control-static">@Model.LastName</p></div>
         </div>
 
         <div class="form-group">
-        <label asp-for="Enrollment date"></label>
+        <label asp-for="EnrollmentDate"></label>
          <div><p class="form-control-static">@Model.EnrollmentDate</p></div>
         </div>
 
@@ -45,4 +38,3 @@
             </div>
       </form>
     </body>
-</html>

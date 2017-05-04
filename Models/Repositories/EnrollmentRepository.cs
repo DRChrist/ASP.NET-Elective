@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using StudentApplication.Data;
+using StudentApplication.Models.Entities;
+
 
 namespace StudentApplication.Models.Repositories
 {

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace StudentApplication.Models
+namespace StudentApplication.Models.Entities
 {
    public enum Grade
     {
